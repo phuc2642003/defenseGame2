@@ -5,11 +5,10 @@ using UnityEngine;
 public class ShopManagement : MonoBehaviour
 {
     public ShopUnit[] shopUnits;
-    public GameManagement gameManage;
     // Start is called before the first frame update
     void Start()
     {
-        
+        init();
     }
 
     // Update is called once per frame
@@ -17,38 +16,28 @@ public class ShopManagement : MonoBehaviour
     {
 
     }
-    public void clickOnShopButton(ShopUnit shopUnit)
+    private void init()
     {
-        if(shopUnit.isActivated)
+        if (shopUnits == null || shopUnits.Length <= 0) return;
+
+        for(int i=0; i<shopUnits.Length;i++)
         {
-            if(!shopUnit.isChosen)
+            if (shopUnits[i]!=null)
             {
-                shopUnit.isChosen = true;
+                if(i==0)
+                {
+                    Pref.SetBool(Const.Player_Hero_PREF + i, true);
+                }
+                else
+                {
+                    if(!PlayerPrefs.HasKey(Const.Player_Hero_PREF + i))
+                    {
+                        Pref.SetBool(Const.Player_Hero_PREF + i,false);
+                    }    
+                    
+                }    
             }    
         }    
-    }
-    
-    public void displayText()
-    {
-        foreach (ShopUnit shopUnit in shopUnits)
-        {
-            if (shopUnit.isActivated)
-            {
-                if (shopUnit.isChosen)
-                {
-                    shopUnit.text.text = "Chosen";
-                }
-                else 
-                {
-                    shopUnit.text.text = "Owned";
-                }
-            }
-            else
-            {
-                shopUnit.text.text = shopUnit.price.ToString();
-            }    
-        }
     }    
-        
     
 }

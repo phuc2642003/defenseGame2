@@ -4,9 +4,28 @@ using UnityEngine;
 
 public class Pref : MonoBehaviour
 {
-    public int GetValueFromComputer(string key)
+    public static void SetBool(string key, bool value)
     {
-        return PlayerPrefs.GetInt(key);
+        if(value)
+        {
+            PlayerPrefs.SetInt(key, 1);
+        }    
+        else
+        {
+            PlayerPrefs.SetInt(key, 0);
+        }    
+    }
+    public static bool GetBool(string key)
+    {
+        int value = PlayerPrefs.GetInt(key);
+        if(value==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }    
     
 }

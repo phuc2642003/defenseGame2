@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class Const
     public const string Best_Score_PREF = "BestScore";
     public const string Coin_PREF = "Coin";
     public const string Player_Hero_PREF = "PlayerHero_";
-    public const string Is_Hero_Active_PREF ="IsHeroActive_";
+    public const string PlayerId_PREF = "playerid";
     public const string SoundVolumne_PREF = "SoundVolumne";
     public const string MusicVolumne_PREF = "MusicVolumne";
 
