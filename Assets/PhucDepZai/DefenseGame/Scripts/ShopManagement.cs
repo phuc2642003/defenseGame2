@@ -10,12 +10,6 @@ public class ShopManagement : MonoBehaviour
     {
         init();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void init()
     {
         if (shopUnits == null || shopUnits.Length <= 0) return;

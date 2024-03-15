@@ -1,18 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopUnitManagement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Text price;
+    public Image heroImg;
+    public Button btn;
 
-    // Update is called once per frame
-    void Update()
+    public void UnitUIManager(ShopUnit unit, int index)
     {
+        if (unit == null)
+            return;
+        if (heroImg)
+            heroImg.sprite = unit.img;
+
+        bool isUnlocked = Pref.GetBool(Const.Player_Hero_PREF + index);
+        if(price)
+        {
+            if (isUnlocked)
+            {
+                if (PlayerPrefs.GetInt(Const.PlayerId_PREF) == index)
+                {
+                    price.text = "Selected";
+                }
+                else
+                {
+                    price.text = "Owned";
+                }
+            }
+            else
+            {
+                price.text = unit.price.ToString();
+            }    
+        }    
         
-    }
+    }    
+
 }
