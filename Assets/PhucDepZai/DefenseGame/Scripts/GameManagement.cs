@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class GameManagement: MonoBehaviour
 {
     public GUIManager guiManager;
+    private ShopManagement shopManagement;
     public int spawnTime;
     public Enemy[] enemies;
     internal bool isGameOver=false;
     internal bool isGameReplay= false;
     private Player player;
     private List<Enemy> enemiesSpawned;
-    public GameObject heroPrefabs;
+    private GameObject heroPrefabs;
     private GameObject heroInstance;
     internal int instanceCoins;
     internal int score;
@@ -29,6 +30,7 @@ public class GameManagement: MonoBehaviour
     void Start()
     {
         guiManager.showHomeGUI();
+        shopManagement = FindObjectOfType<ShopManagement>();
         totalConis = PlayerPrefs.GetInt(Const.Coin_PREF, 0);
         homeCoinText.text = totalConis.ToString();
     }
@@ -41,6 +43,14 @@ public class GameManagement: MonoBehaviour
         
         instanceCoins = 0;
         score = 0;
+        var shopUnits = shopManagement.shopUnits;
+        for(int i=0; i<shopUnits.Length;i++)
+        {
+            if(i==PlayerPrefs.GetInt(Const.PlayerId_PREF))
+            {
+                heroPrefabs = shopUnits[i].playerPrefab;
+            }    
+        }    
         heroInstance=Instantiate(heroPrefabs, new Vector3(-6, -1, 0), Quaternion.identity);
         instanceCoins = 0;
         score = 0;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ShopUnit
 {
-    public Player playerPrefab;
+    public GameObject playerPrefab;
     public int price;
     public Sprite img;
 
