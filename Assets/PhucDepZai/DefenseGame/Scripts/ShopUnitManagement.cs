@@ -23,7 +23,7 @@ public class ShopUnitManagement : MonoBehaviour
             {
                 if (PlayerPrefs.GetInt(Const.PlayerId_PREF) == index)
                 {
-                    price.text = "Selected";
+                    price.text = "Chosen";
                 }
                 else
                 {
