@@ -4,12 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GUIManager : MonoBehaviour
 {
+    public static GUIManager Instance { get; private set; }
+    
     public GameObject homeGUI;
     public GameObject gameGUI;
     public GameObject pauseBox;
     public GameObject gameOverBox;
     public GameObject settingBox;
     public GameObject shopBox;
+
+    private void Awake()
+    {
+        if(Instance !=null && Instance!=this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     public void showHomeGUI()
     {
         homeGUI.SetActive(true);

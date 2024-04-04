@@ -9,13 +9,12 @@ public class Player : MonoBehaviour
     private Animator hero_anim;
     private GameObject e_weapon;
     private static bool isDead;
-    private GameManagement gameManage;
+
     // Start is called before the first frame update
     void Start()
     {
         hero_anim = GetComponent<Animator>();
         e_weapon = GameObject.FindWithTag(Const.EnemyWeapon_tag);
-        gameManage = FindObjectOfType<GameManagement>();
     }
 
     // Update is called once per frame
@@ -52,20 +51,21 @@ public class Player : MonoBehaviour
     {
         if(isDead)
         {
-            gameManage.isGameOver = true;
-            gameManage.totalConis += gameManage.instanceCoins;
-            gameManage.homeCoinText.text = gameManage.totalConis.ToString();
-            PlayerPrefs.SetInt(Const.Coin_PREF, gameManage.totalConis);
-            if (gameManage.score > PlayerPrefs.GetInt(Const.Best_Score_PREF, 0))
+            GameManagement.Instance.isGameOver = true;
+            GameManagement.Instance.totalConis += GameManagement.Instance.instanceCoins;
+            GameManagement.Instance.homeCoinText.text = GameManagement.Instance.totalConis.ToString();
+            PlayerPrefs.SetInt(Const.Coin_PREF, GameManagement.Instance.totalConis);
+            if (GameManagement.Instance.score > PlayerPrefs.GetInt(Const.Best_Score_PREF, 0))
             {
-                gameManage.bestScore = gameManage.score;
+                GameManagement.Instance.bestScore = GameManagement.Instance.score;
             }
             else
             {
-                gameManage.bestScore = PlayerPrefs.GetInt(Const.Best_Score_PREF, 0);
+                GameManagement.Instance.bestScore = PlayerPrefs.GetInt(Const.Best_Score_PREF, 0);
             }
-            gameManage.bestScoreText.text = gameManage.bestScore.ToString();
-            PlayerPrefs.SetInt(Const.Best_Score_PREF, gameManage.bestScore);
+            GameManagement.Instance.bestScoreText.text = GameManagement.Instance.bestScore.ToString();
+            PlayerPrefs.SetInt(Const.Best_Score_PREF, GameManagement.Instance.bestScore);
         }   
     }    
 }
+    

@@ -7,21 +7,15 @@ public class ShopUIManagement : MonoBehaviour
 {
     public Transform UnitGrid;
     public ShopUnitManagement shopUnitPrefab;
-    private ShopManagement shopManage;
-    private GameManagement gameManage;
 
     public void init()
     {
-        shopManage = FindObjectOfType<ShopManagement>();
-        gameManage = FindObjectOfType<GameManagement>();
-
         updateShopUI();
-
     }
 
     private void updateShopUI()
     {
-        var units = shopManage.shopUnits;
+        var units = ShopManagement.Instance.shopUnits;
 
         if (units == null || units.Length <= 0)
             return;

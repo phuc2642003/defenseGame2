@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class GameManagement: MonoBehaviour
 {
-    public GUIManager guiManager;
-    private ShopManagement shopManagement;
+    public static GameManagement Instance { get; private set; }
+    
+    //public GUIManager guiManager;
     public int spawnTime;
     public Enemy[] enemies;
     internal bool isGameOver=false;
     internal bool isGameReplay= false;
     private Player player;
-    private List<Enemy> enemiesSpawned;
+    private List<Enemy> enemiesSpawned = new List<Enemy>();
     private GameObject heroPrefabs;
     private GameObject heroInstance;
     internal int instanceCoins;
@@ -23,27 +24,33 @@ public class GameManagement: MonoBehaviour
     public Text homeCoinText;
     public Text bestScoreText;
     // Start is called before the first frame update
-    private void Awake()
+    private void Awake()    
     {
-        enemiesSpawned = new List<Enemy>();
+        if(Instance!=null && Instance!=this)
+        {
+            Destroy(this);
+        }    
+        else
+        {
+            Instance = this;
+        }    
     }
     void Start()
     {
-        guiManager.showHomeGUI();
-        shopManagement = FindObjectOfType<ShopManagement>();
+        GUIManager.Instance.showHomeGUI();
         totalConis = PlayerPrefs.GetInt(Const.Coin_PREF, 0);
         homeCoinText.text = totalConis.ToString();
     }
     public void PlayGame()
     {
-        guiManager.showGameGUI();
+        GUIManager.Instance.showGameGUI();
         player = FindAnyObjectByType<Player>();
         
         StartCoroutine(spawnEnemy());
         
         instanceCoins = 0;
         score = 0;
-        var shopUnits = shopManagement.shopUnits;
+        var shopUnits = ShopManagement.Instance.shopUnits;
         for(int i=0; i<shopUnits.Length;i++)
         {
             if(i==PlayerPrefs.GetInt(Const.PlayerId_PREF))
@@ -63,7 +70,7 @@ public class GameManagement: MonoBehaviour
     {
         if(isGameOver)
         {
-            guiManager.showGameOverBox();
+            GUIManager.Instance.showGameOverBox();
             //Debug.Log(bestScore + " " + totalConis);
         }
     }

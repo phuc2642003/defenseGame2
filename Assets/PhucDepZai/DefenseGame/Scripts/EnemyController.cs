@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private GameObject hero_weapon;
     private bool isDead;
     private Player player;
-    private GameManagement gameManage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
         hero = GameObject.FindWithTag(Const.Player_tag);
         hero_weapon= GameObject.FindWithTag(Const.HeroWeapon_tag);
         player = FindObjectOfType<Player>();
-        gameManage = FindObjectOfType<GameManagement>();
     }
 
     // Update is called once per frame
@@ -54,9 +53,9 @@ public class Enemy : MonoBehaviour
             enemy_anim.SetTrigger(Const.deathParameter);
             gameObject.layer = LayerMask.NameToLayer(Const.Dead_layer);
             int randomCoins = Random.Range(1, 5);
-            gameManage.instanceCoins += randomCoins;
-            gameManage.score++;
-            gameManage.coinText.text = gameManage.instanceCoins.ToString();
+            GameManagement.Instance.instanceCoins += randomCoins;
+            GameManagement.Instance.score++;
+            GameManagement.Instance.coinText.text = GameManagement.Instance.instanceCoins.ToString();
         }    
     }
     public bool ableToAttack(GameObject obj)

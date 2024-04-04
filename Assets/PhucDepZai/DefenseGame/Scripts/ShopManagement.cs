@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class ShopManagement : MonoBehaviour
 {
+    public static ShopManagement Instance { get; private set; }
+
     public ShopUnit[] shopUnits;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if(Instance!=null && Instance!=this)
+        {
+            Destroy(this);
+        }    
+        else
+        {
+            Instance = this;
+        }    
+
+    }
     void Start()
     {
         init();
