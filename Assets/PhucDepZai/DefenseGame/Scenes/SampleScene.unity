@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 322195608}
   - component: {fileID: 322195609}
   m_Layer: 5
-  m_Name: VolumeSlider
+  m_Name: SoundSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +594,19 @@ MonoBehaviour:
   m_Value: 0.387
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 829463976}
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
+        m_MethodName: SoundChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &328397469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1198,7 @@ GameObject:
   - component: {fileID: 641945154}
   - component: {fileID: 641945153}
   m_Layer: 5
-  m_Name: VolumeIcon
+  m_Name: SoundIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2001,6 +2013,7 @@ GameObject:
   - component: {fileID: 829463973}
   - component: {fileID: 829463975}
   - component: {fileID: 829463974}
+  - component: {fileID: 829463976}
   m_Layer: 5
   m_Name: SettingBox
   m_TagString: Untagged
@@ -2066,6 +2079,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829463972}
   m_CullTransparentMesh: 1
+--- !u!114 &829463976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829463972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792d8ee6be014bb4f97dfbfac085405d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 942410282}
+  soundSlider: {fileID: 322195609}
 --- !u!1 &866194058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,7 +2447,19 @@ MonoBehaviour:
   m_Value: 0.573
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 829463976}
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
+        m_MethodName: MusicChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1067350985
 GameObject:
   m_ObjectHideFlags: 0

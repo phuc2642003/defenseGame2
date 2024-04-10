@@ -8,9 +8,9 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get; private set; }
     [Header("Settings: ")]
     [Range(0f, 1f)]
-    public float musicVol = 0.3f;
+    public float musicVol;
     [Range(0f, 1f)]
-    public float soundVol = 0.3f;
+    public float soundVol;
 
     public AudioSource musicAudioSource;
     public AudioSource soundAudioSource;
@@ -32,7 +32,11 @@ public class AudioController : MonoBehaviour
             Instance = this;
         }
     }
-
+    void Start()
+    {
+        musicVol= PlayerPrefs.GetFloat(Const.MusicVolumne_PREF, 0.5f);
+        soundVol = PlayerPrefs.GetFloat(Const.SoundVolumne_PREF, 0.5f);
+    }
     public void PlaySound(AudioClip[] sounds, AudioSource aus = null)
     {
         if (!aus)

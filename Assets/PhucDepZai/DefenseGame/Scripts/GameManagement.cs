@@ -99,5 +99,6 @@ public class GameManagement: MonoBehaviour
     public void ReplayGame()
     {
         isGameReplay = true;
+        AudioController.Instance.StopPlayMusic();
     }
 }

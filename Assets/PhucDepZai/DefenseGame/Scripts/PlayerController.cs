@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
             GameManagement.Instance.bestScoreText.text = GameManagement.Instance.bestScore.ToString();
             PlayerPrefs.SetInt(Const.Best_Score_PREF, GameManagement.Instance.bestScore);
             AudioController.Instance.PlaySound(AudioController.Instance.gameOver);
+            AudioController.Instance.StopPlayMusic();
         }   
     }    
 }
