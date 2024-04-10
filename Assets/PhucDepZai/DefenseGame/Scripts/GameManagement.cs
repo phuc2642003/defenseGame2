@@ -7,7 +7,6 @@ public class GameManagement: MonoBehaviour
 {
     public static GameManagement Instance { get; private set; }
     
-    //public GUIManager guiManager;
     public int spawnTime;
     public Enemy[] enemies;
     internal bool isGameOver=false;
@@ -62,6 +61,7 @@ public class GameManagement: MonoBehaviour
         instanceCoins = 0;
         score = 0;
         coinText.text = instanceCoins.ToString();
+        AudioController.Instance.PlayBGMusic();
         isGameOver = false;
         isGameReplay = false;
     }    

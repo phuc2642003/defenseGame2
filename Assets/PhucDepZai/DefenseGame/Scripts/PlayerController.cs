@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
             if(!isAttacked && hero_anim)
             {
                 hero_anim.SetBool(Const.attackParameter, true);
+                AudioController.Instance.PlaySound(AudioController.Instance.playerAttack);
             }
         }    
     }
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
             }
             GameManagement.Instance.bestScoreText.text = GameManagement.Instance.bestScore.ToString();
             PlayerPrefs.SetInt(Const.Best_Score_PREF, GameManagement.Instance.bestScore);
+            AudioController.Instance.PlaySound(AudioController.Instance.gameOver);
         }   
     }    
 }

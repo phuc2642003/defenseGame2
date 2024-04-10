@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
             GameManagement.Instance.instanceCoins += randomCoins;
             GameManagement.Instance.score++;
             GameManagement.Instance.coinText.text = GameManagement.Instance.instanceCoins.ToString();
+            AudioController.Instance.PlaySound(AudioController.Instance.enemyDead);
         }    
     }
     public bool ableToAttack(GameObject obj)
